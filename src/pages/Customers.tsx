@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { SearchIcon, PlusCircle, Edit, Trash2, User } from "lucide-react";
+import { SearchIcon, PlusCircle, Edit, Trash2, User, Mic, MicOff, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,6 +17,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import CustomerForm from "@/components/CustomerForm";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Customer, dummyCustomers } from "@/lib/data";
+import VoiceInput from "@/components/VoiceInput";
 
 const Customers = () => {
   const [customers, setCustomers] = useState<Customer[]>(dummyCustomers);
@@ -24,6 +25,7 @@ const Customers = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [currentCustomer, setCurrentCustomer] = useState<Customer | null>(null);
+  const [isFullScreenView, setIsFullScreenView] = useState(false);
   const { toast } = useToast();
 
   const filteredCustomers = customers.filter(customer => 
@@ -44,6 +46,7 @@ const Customers = () => {
     setCustomers(customers.map(c => c.id === customer.id ? customer : c));
     setIsEditDialogOpen(false);
     setCurrentCustomer(null);
+    setIsFullScreenView(false);
     toast({
       title: "Customer Updated",
       description: `${customer.name}'s measurements have been updated.`,
@@ -59,9 +62,18 @@ const Customers = () => {
     });
   };
 
-  const openEditDialog = (customer: Customer) => {
+  const openEditDialog = (customer: Customer, fullScreen = false) => {
     setCurrentCustomer(customer);
     setIsEditDialogOpen(true);
+    setIsFullScreenView(fullScreen);
+  };
+
+  const handleVoiceSearch = (text: string) => {
+    setSearchQuery(text);
+    toast({
+      title: "Voice Search",
+      description: `Searching for: ${text}`,
+    });
   };
 
   return (
@@ -69,14 +81,17 @@ const Customers = () => {
       <h1 className="text-3xl font-bold mb-6">Customer Measurements</h1>
       
       <div className="flex justify-between items-center mb-6">
-        <div className="relative w-full max-w-md">
+        <div className="relative w-full max-w-md flex items-center">
           <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
           <Input 
             placeholder="Search by name or phone number..." 
             value={searchQuery} 
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
+            className="pl-10 pr-10"
           />
+          <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+            <VoiceInput onResult={handleVoiceSearch} placeholder="Voice search for customers" />
+          </div>
         </div>
         <Button onClick={() => setIsAddDialogOpen(true)}>
           <PlusCircle className="mr-2 h-4 w-4" /> Add Customer
@@ -98,11 +113,11 @@ const Customers = () => {
             <TableBody>
               {filteredCustomers.length > 0 ? (
                 filteredCustomers.map((customer) => (
-                  <TableRow key={customer.id}>
+                  <TableRow key={customer.id} className="cursor-pointer" onClick={() => openEditDialog(customer, true)}>
                     <TableCell className="font-medium">{customer.name}</TableCell>
                     <TableCell>{customer.phone}</TableCell>
                     <TableCell>{customer.lastVisit}</TableCell>
-                    <TableCell className="flex space-x-2">
+                    <TableCell className="flex space-x-2" onClick={(e) => e.stopPropagation()}>
                       <Button variant="outline" size="sm" onClick={() => openEditDialog(customer)}>
                         <Edit className="h-4 w-4" />
                       </Button>
@@ -142,16 +157,22 @@ const Customers = () => {
       </Dialog>
 
       {/* Edit Customer Dialog */}
-      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="sm:max-w-[600px]">
+      <Dialog open={isEditDialogOpen} onOpenChange={(open) => {
+        setIsEditDialogOpen(open);
+        if (!open) setIsFullScreenView(false);
+      }}>
+        <DialogContent className={`${isFullScreenView ? 'sm:max-w-[90vw] h-[90vh] overflow-auto' : 'sm:max-w-[600px]'}`}>
           <DialogHeader>
-            <DialogTitle>Edit Customer</DialogTitle>
+            <DialogTitle>{isFullScreenView ? "Customer Details" : "Edit Customer"}</DialogTitle>
           </DialogHeader>
           {currentCustomer && (
             <CustomerForm 
               customer={currentCustomer} 
               onSubmit={handleEditCustomer} 
-              onCancel={() => setIsEditDialogOpen(false)} 
+              onCancel={() => {
+                setIsEditDialogOpen(false);
+                setIsFullScreenView(false);
+              }} 
             />
           )}
         </DialogContent>

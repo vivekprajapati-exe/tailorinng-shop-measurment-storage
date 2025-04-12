@@ -84,8 +84,37 @@ const DashboardContent = () => {
             </Button>
             <Button variant="outline" className="h-auto py-4 flex flex-col items-center justify-center gap-2">
               <Users className="h-5 w-5" />
-              <span>View Recent Customers</span>
+              <span>Recent Customers</span>
             </Button>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="mt-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>Garment Types</CardTitle>
+            <CardDescription>Common women's garments we tailor</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="p-4 border rounded-lg text-center hover:border-primary transition-colors">
+                <h3 className="font-medium">Blouse</h3>
+                <p className="text-xs text-muted-foreground">15 orders this month</p>
+              </div>
+              <div className="p-4 border rounded-lg text-center hover:border-primary transition-colors">
+                <h3 className="font-medium">Kurti</h3>
+                <p className="text-xs text-muted-foreground">12 orders this month</p>
+              </div>
+              <div className="p-4 border rounded-lg text-center hover:border-primary transition-colors">
+                <h3 className="font-medium">Salwar</h3>
+                <p className="text-xs text-muted-foreground">8 orders this month</p>
+              </div>
+              <div className="p-4 border rounded-lg text-center hover:border-primary transition-colors">
+                <h3 className="font-medium">Lehenga</h3>
+                <p className="text-xs text-muted-foreground">5 orders this month</p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

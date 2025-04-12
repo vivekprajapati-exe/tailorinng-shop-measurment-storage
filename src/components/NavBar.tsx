@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Scissors, Users, Settings, Menu, X } from "lucide-react";
+import { Scissors, Users, Settings, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -24,7 +24,8 @@ const NavBar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center h-16">
         <div className="flex items-center">
           <Scissors className="h-6 w-6 mr-2 text-primary" />
-          <span className="font-bold text-lg">StitchTrack</span>
+          <span className="font-bold text-lg">सिलाई कला</span>
+          <span className="text-xs ml-2 text-gray-500">(Silai Kala)</span>
         </div>
 
         {/* Desktop Navigation */}
