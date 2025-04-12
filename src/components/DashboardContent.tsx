@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { UserPlus, Users, ScissorsLinear, Calendar } from "lucide-react";
+import { UserPlus, Users, Scissors, Calendar } from "lucide-react";
 
 const DashboardContent = () => {
   return (
@@ -32,7 +32,7 @@ const DashboardContent = () => {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-lg font-medium flex items-center">
-              <ScissorsLinear className="mr-2 h-5 w-5 text-primary" />
+              <Scissors className="mr-2 h-5 w-5 text-primary" />
               Orders
             </CardTitle>
             <CardDescription>Track your tailoring orders</CardDescription>
@@ -75,7 +75,7 @@ const DashboardContent = () => {
               <span>New Customer</span>
             </Button>
             <Button variant="outline" className="h-auto py-4 flex flex-col items-center justify-center gap-2">
-              <ScissorsLinear className="h-5 w-5" />
+              <Scissors className="h-5 w-5" />
               <span>New Order</span>
             </Button>
             <Button variant="outline" className="h-auto py-4 flex flex-col items-center justify-center gap-2">

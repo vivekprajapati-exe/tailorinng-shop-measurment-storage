@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ScissorsLinear, Users, Settings, Menu, X } from "lucide-react";
+import { Scissors, Users, Settings, Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -10,7 +10,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   
   const navItems = [
-    { path: "/", label: "Dashboard", icon: <ScissorsLinear size={18} /> },
+    { path: "/", label: "Dashboard", icon: <Scissors size={18} /> },
     { path: "/customers", label: "Customers", icon: <Users size={18} /> },
     { path: "/settings", label: "Settings", icon: <Settings size={18} /> },
   ];
@@ -23,7 +23,7 @@ const NavBar = () => {
     <nav className="bg-white border-b border-gray-200 shadow-sm">
       <div className="container mx-auto px-4 flex justify-between items-center h-16">
         <div className="flex items-center">
-          <ScissorsLinear className="h-6 w-6 mr-2 text-primary" />
+          <Scissors className="h-6 w-6 mr-2 text-primary" />
           <span className="font-bold text-lg">StitchTrack</span>
         </div>
 
