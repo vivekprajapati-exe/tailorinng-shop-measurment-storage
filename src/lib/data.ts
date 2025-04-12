@@ -1,3 +1,4 @@
+
 export interface Customer {
   id: string;
   name: string;
@@ -8,7 +9,7 @@ export interface Customer {
   measurements: {
     chest: string;
     waist: string;
-    hips: string;
+    hips: string; // Added the missing hips property here
     blouse: {
       length: string;
       shoulderWidth: string;

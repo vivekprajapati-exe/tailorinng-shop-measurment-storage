@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Customer } from "@/lib/data";
@@ -36,6 +37,7 @@ const CustomerForm = ({ customer, onSubmit, onCancel }: CustomerFormProps) => {
     measurements: {
       chest: customer?.measurements.chest || "",
       waist: customer?.measurements.waist || "",
+      hips: customer?.measurements.hips || "", // Added the missing hips property
       
       blouse: customer?.measurements.blouse || {
         length: "",
