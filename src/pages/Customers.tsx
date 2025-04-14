@@ -1,6 +1,5 @@
-
-import { useState } from "react";
-import { SearchIcon, PlusCircle, Edit, Trash2, User, Mic, MicOff, Loader2 } from "lucide-react";
+import React, { useState } from "react";
+import { SearchIcon, PlusCircle, Edit, Trash2, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,7 +16,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import CustomerForm from "@/components/CustomerForm";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Customer, dummyCustomers } from "@/lib/data";
-import VoiceInput from "@/components/VoiceInput";
 
 const Customers = () => {
   const [customers, setCustomers] = useState<Customer[]>(dummyCustomers);
@@ -68,30 +66,19 @@ const Customers = () => {
     setIsFullScreenView(fullScreen);
   };
 
-  const handleVoiceSearch = (text: string) => {
-    setSearchQuery(text);
-    toast({
-      title: "Voice Search",
-      description: `Searching for: ${text}`,
-    });
-  };
-
   return (
     <div className="container mx-auto py-6 max-w-6xl">
       <h1 className="text-3xl font-bold mb-6">Customer Measurements</h1>
       
       <div className="flex justify-between items-center mb-6">
-        <div className="relative w-full max-w-md flex items-center">
+        <div className="relative w-full max-w-md">
           <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
           <Input 
             placeholder="Search by name or phone number..." 
             value={searchQuery} 
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-10"
+            className="pl-10"
           />
-          <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
-            <VoiceInput onResult={handleVoiceSearch} placeholder="Voice search for customers" />
-          </div>
         </div>
         <Button onClick={() => setIsAddDialogOpen(true)}>
           <PlusCircle className="mr-2 h-4 w-4" /> Add Customer
