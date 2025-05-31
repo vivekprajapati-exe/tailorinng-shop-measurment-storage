@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Scissors, Users, Settings, Menu } from "lucide-react";
+import { Scissors, Users, Settings, Menu, Package } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -12,6 +12,7 @@ const NavBar = () => {
   const navItems = [
     { path: "/", label: "Dashboard", icon: <Scissors size={18} /> },
     { path: "/customers", label: "Customers", icon: <Users size={18} /> },
+    { path: "/orders", label: "Orders", icon: <Package size={18} /> },
     { path: "/settings", label: "Settings", icon: <Settings size={18} /> },
   ];
 
