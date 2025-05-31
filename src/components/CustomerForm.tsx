@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Customer } from "@/lib/data";
@@ -35,7 +36,7 @@ const CustomerForm = ({ customer, onSubmit, onCancel }: CustomerFormProps) => {
     measurements: {
       chest: customer?.measurements.chest || "",
       waist: customer?.measurements.waist || "",
-      hips: customer?.measurements.hips || "", // Added the missing hips property
+      hips: customer?.measurements.hips || "",
       
       blouse: customer?.measurements.blouse || {
         length: "",
@@ -170,6 +171,398 @@ const CustomerForm = ({ customer, onSubmit, onCancel }: CustomerFormProps) => {
               <Button type="button" variant="outline" onClick={onCancel}>Cancel</Button>
               <Button type="button" onClick={() => setActiveTab("blouse")}>
                 Next: Blouse Measurements
+              </Button>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="blouse" className="space-y-4 pt-4">
+            <h3 className="text-lg font-semibold mb-4">Blouse Measurements</h3>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <FormField
+                control={form.control}
+                name="measurements.blouse.length"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Length</FormLabel>
+                    <FormControl>
+                      <Input placeholder="16" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.blouse.shoulderWidth"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Shoulder Width</FormLabel>
+                    <FormControl>
+                      <Input placeholder="14" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.blouse.armhole"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Armhole</FormLabel>
+                    <FormControl>
+                      <Input placeholder="16" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.blouse.sleeveLength"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Sleeve Length</FormLabel>
+                    <FormControl>
+                      <Input placeholder="6" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.blouse.bust"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Bust</FormLabel>
+                    <FormControl>
+                      <Input placeholder="36" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.blouse.neckDepth"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Neck Depth</FormLabel>
+                    <FormControl>
+                      <Input placeholder="6" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.blouse.backNeckDepth"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Back Neck Depth</FormLabel>
+                    <FormControl>
+                      <Input placeholder="2" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            
+            <div className="flex justify-between mt-6">
+              <Button type="button" variant="outline" onClick={() => setActiveTab("personal")}>
+                Previous
+              </Button>
+              <Button type="button" onClick={() => setActiveTab("kurti")}>
+                Next: Kurti
+              </Button>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="kurti" className="space-y-4 pt-4">
+            <h3 className="text-lg font-semibold mb-4">Kurti Measurements</h3>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <FormField
+                control={form.control}
+                name="measurements.kurti.length"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Length</FormLabel>
+                    <FormControl>
+                      <Input placeholder="38" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.kurti.shoulderWidth"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Shoulder Width</FormLabel>
+                    <FormControl>
+                      <Input placeholder="14" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.kurti.bust"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Bust</FormLabel>
+                    <FormControl>
+                      <Input placeholder="36" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.kurti.waist"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Waist</FormLabel>
+                    <FormControl>
+                      <Input placeholder="30" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.kurti.hips"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Hips</FormLabel>
+                    <FormControl>
+                      <Input placeholder="38" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.kurti.sleeveLength"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Sleeve Length</FormLabel>
+                    <FormControl>
+                      <Input placeholder="18" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.kurti.neckDepth"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Neck Depth</FormLabel>
+                    <FormControl>
+                      <Input placeholder="6" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.kurti.armhole"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Armhole</FormLabel>
+                    <FormControl>
+                      <Input placeholder="16" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            
+            <div className="flex justify-between mt-6">
+              <Button type="button" variant="outline" onClick={() => setActiveTab("blouse")}>
+                Previous
+              </Button>
+              <Button type="button" onClick={() => setActiveTab("salwar")}>
+                Next: Salwar
+              </Button>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="salwar" className="space-y-4 pt-4">
+            <h3 className="text-lg font-semibold mb-4">Salwar Measurements</h3>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <FormField
+                control={form.control}
+                name="measurements.salwar.length"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Length</FormLabel>
+                    <FormControl>
+                      <Input placeholder="38" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.salwar.waist"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Waist</FormLabel>
+                    <FormControl>
+                      <Input placeholder="30" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.salwar.hips"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Hips</FormLabel>
+                    <FormControl>
+                      <Input placeholder="38" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.salwar.calf"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Calf</FormLabel>
+                    <FormControl>
+                      <Input placeholder="14" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.salwar.ankle"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Ankle</FormLabel>
+                    <FormControl>
+                      <Input placeholder="12" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            
+            <div className="flex justify-between mt-6">
+              <Button type="button" variant="outline" onClick={() => setActiveTab("kurti")}>
+                Previous
+              </Button>
+              <Button type="button" onClick={() => setActiveTab("lehenga")}>
+                Next: Lehenga
+              </Button>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="lehenga" className="space-y-4 pt-4">
+            <h3 className="text-lg font-semibold mb-4">Lehenga Measurements</h3>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <FormField
+                control={form.control}
+                name="measurements.lehenga.length"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Length</FormLabel>
+                    <FormControl>
+                      <Input placeholder="40" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.lehenga.waist"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Waist</FormLabel>
+                    <FormControl>
+                      <Input placeholder="30" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.lehenga.hips"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Hips</FormLabel>
+                    <FormControl>
+                      <Input placeholder="38" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="measurements.lehenga.flare"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Flare</FormLabel>
+                    <FormControl>
+                      <Input placeholder="80" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            
+            <div className="flex justify-between mt-6">
+              <Button type="button" variant="outline" onClick={() => setActiveTab("salwar")}>
+                Previous
+              </Button>
+              <Button type="submit" className="bg-green-600 hover:bg-green-700">
+                Save Customer
               </Button>
             </div>
           </TabsContent>
